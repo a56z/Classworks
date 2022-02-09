@@ -17,7 +17,7 @@ class KnightPathFinder
   def self.valid_moves(pos)
     valid_moves = []
 
-    cur_x, cur_y = po
+    cur_x, cur_y = pos
     MOVES.each do |(dx, dy)|
       new_pos = [cur_x + dx, cur_y + dy]
 
