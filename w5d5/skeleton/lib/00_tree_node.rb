@@ -1,15 +1,19 @@
 class PolyTreeNode
-    def initialize
-        @value = value
-        @parent = nil
-        @children = []
+
+    attr_accessor :value
+    attr_reader :parent
+
+    def initialize(value = nil)
+        @value, @parent, @children = value, nil, []
     end
 
-    def parent
+    def parent=(parent)
         @parent
-    end
+        return if self.parent == parent
 
-    def children
-        @children
+        @parent = parent
+        self.parent._children << self << unless self.parent.nil?
+        self
     end
+end
 end
