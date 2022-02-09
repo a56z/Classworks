@@ -3,9 +3,16 @@ class KnightPathFinder
     def intitialize
     end
 
-    def valid_moves(pos)
-        [2,1]
-        [1,2]
+    def valid_moves(pos){
+        [3,1],
+        [3,-1],
+        [-3,1],
+        [-1,3],
+        [1,-3],
+        [1,3],
+        [-3,-1],
+        [-1,-3]
+    }  
     end
 
 end
