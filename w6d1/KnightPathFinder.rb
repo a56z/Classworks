@@ -65,12 +65,6 @@ class KnightPathFinder
         end
     end
 
-
-
-    def considered_positions
-        @considered_positions = [0, 0]
-    end
-
     def new_move_positions(pos)
         KnightPathFinder.valid_moves(pos)
             .reject { |new_pos| considered_positions.inlude?(new_pos) }
