@@ -15,9 +15,9 @@ class TicTacToeNode
     end
 
     if self.next_mover_mark == evaluator
-      self.children.all? { |node| node.losing_node?(evaluator) }
+      self.children.find { |node| node.losing_node?(evaluator) }
     else
-      self.children.any? { |node| node.losing_node?(evaluator) } 
+      self.children.find { |node| node.losing_node?(evaluator) } 
     end
 
   end
