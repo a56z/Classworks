@@ -84,6 +84,7 @@ class KnightPathFinder
 
     nodes
   end
+  
 end
 
 if $PROGRAM_NAME == __FILE__
