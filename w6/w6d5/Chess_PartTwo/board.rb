@@ -106,4 +106,12 @@ class Board
         end
     end
 
+    def checkmate?(color)
+        return false unless in_check?(color)
+
+        pieces.select { |p| p.color == color }.all? do |piece|
+            piece.valid_moves.empty?
+        end
+    end
+
 end
