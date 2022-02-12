@@ -1,6 +1,4 @@
-require_relative 'board'
-
-class Piece < Board
+class Piece
 
     def initialize(board, figure)
         @board = Board.new(figure)
