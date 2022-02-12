@@ -99,4 +99,11 @@ class Board
         end
     end
 
+    def in_check?(color)
+        king_pos = find_king(color).pos
+        pieces.any? do |p|
+            p.color != color && moves.include?(king_pos)
+        end
+    end
+
 end
