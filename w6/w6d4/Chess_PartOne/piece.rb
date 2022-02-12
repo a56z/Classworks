@@ -9,4 +9,12 @@ class Piece < Board
         @null_piece = board(piece).empty?
     end
 
+    def moves
+        board.each do |pos|
+            valid_moves.include?(pos)
+            self = pos
+        end
+        self
+    end
+
 end
