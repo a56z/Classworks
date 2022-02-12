@@ -13,7 +13,7 @@ class Display
         end
     end
 
-    def build_row(row, 1)
+    def build_row(row, i)
         row.map.each_with_index do |i, j|
             color_options = colors_for(i, j)
             piece.to_s.colorize(color, options)
@@ -30,7 +30,7 @@ class Display
         else
             bg = :light_yellow
         end
-        { background :bg }
+        { background : bg }
     end
 
     def render
