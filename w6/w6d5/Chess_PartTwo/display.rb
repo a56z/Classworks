@@ -2,26 +2,9 @@ require 'colorize'
 require_relative 'cursor'
 
 class Display
- def initialize(board)
-    @board = board
-    @cursor = Cursor.new([0,0, board])
- end
-
-
-
- def cursor
-    @cursor = Cursor.new([0,0], board)
- end
-#  def cursor_color
-#     @cursor_pos.colorize(:blue) 
-#  end
-
-    def move_cursor
-        render.each do |pos|
-            if pos.valid_pos?
-                render(pos)
-            end
-        end
+    def initialize(board)
+        @board = board
+        @cursor = Cursor.new([0,0, board])
     end
 
     def build_grid
@@ -35,6 +18,19 @@ class Display
             color_options = colors_for(i, j)
             piece.to_s.colorize(color, options)
         end
+    end
+    
+    def colors_for(i, j)
+        if cursor.cursor_pos == [i,j] && cursor.selected
+            bg = :light_green
+        elsif cursor.cursor_pos == [i,j]
+            bg = :light_red
+        elsif (i + j).odd?
+            bg = :light_blue
+        else
+            bg = :light_yellow
+        end
+        { background :bg }
     end
 
     def render
