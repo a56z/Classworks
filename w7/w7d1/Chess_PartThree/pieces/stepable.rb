@@ -2,7 +2,7 @@ module Stepable
     def moves
         move_diffs.each_with_object([]) do |(dx, dy), moves|
             cur_x, cur_y = pos
-            pos pos[cur_x + dx, cur_y + dy]
+            pos = [cur_x + dx, cur_y + dy]
 
             next unless board.valid_pos?(pos)
 

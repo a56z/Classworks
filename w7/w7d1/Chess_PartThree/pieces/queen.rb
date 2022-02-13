@@ -1,3 +1,6 @@
+require_relative 'piece'
+require_relative 'slideable'
+
 class Queen
     include Stepable
     include Slideable

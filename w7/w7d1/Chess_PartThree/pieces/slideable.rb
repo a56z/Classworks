@@ -49,7 +49,7 @@ module Slideable
             if board.empty?(pos)
                 moves << pos
             else
-                #can't take an opponent's piece
+                #can take an opponent's piece
                 moves << pos if board[pos].color != color
 
                 #can't move past blocking piece

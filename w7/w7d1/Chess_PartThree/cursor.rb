@@ -21,18 +21,18 @@ KEYMAP = {
   "\177" => :backspace,
   "\004" => :delete,
   "\u0003" => :ctrl_c,
-}
+}.freeze
 
 MOVES = {
   left: [0, -1],
   right: [0, 1],
   up: [-1, 0],
   down: [1, 0]
-}
+}.freeze
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :selected
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
@@ -86,7 +86,7 @@ class Cursor
         exit 0
     when :space, :return
         toggle_selected
-        @cursor_pos
+        cursor_pos
     when :left, :right, :up, :down
         update_pos(MOVES[key])
         nil
@@ -97,6 +97,6 @@ class Cursor
 
   def update_pos(diff)
     new_pos = [cursor_pos[0] + diff[0], cursor_pos[1] + diff[1]]
-    cursor_pos = new_pos if cursor_pos.valid_pos?(new_pos)
+    @cursor_pos = new_pos if board.valid_pos?(new_pos)
   end
 end

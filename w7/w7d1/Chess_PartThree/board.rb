@@ -9,7 +9,7 @@ class Board
     end
 
     def [](pos)
-        raise 'invalid pos' unless valid_pos(pos)
+        raise 'invalid pos' unless valid_pos?(pos)
        
         row, col = pos
        @rows[row][col] 
@@ -67,14 +67,14 @@ class Board
     end
 
     def valid_pos?(pos)
-        pos.all? { |coord| coord.between(0, 7) }
+        pos.all? { |coord| coord.between?(0, 7) }
     end
 
     private
 
     attr_reader :sentinel
 
-    def fill_black_row(color)
+    def fill_back_row(color)
         back_pieces = [
             Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook
         ]
@@ -87,7 +87,7 @@ class Board
 
     def fill_pawns_row(color)
         i = color == :white ? 6 : 1
-        8.times { |j| Pawn.new(color, self, [i, j])}
+        8.times { |j| Pawn.new(color, self, [i, j]}
     end
 
     def find_king(color)
@@ -98,7 +98,7 @@ class Board
     def in_check?(color)
         king_pos = find_king(color).pos
         pieces.any? do |p|
-            p.color != color && moves.include?(king_pos)
+            p.color != color && p.moves.include?(king_pos)
         end
     end
 

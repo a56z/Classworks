@@ -7,7 +7,7 @@ class Display
 
     def initialize(board)
         @board = board
-        @cursor = Cursor.new([0,0, board])
+        @cursor = Cursor.new([0,0] board])
         @notifications = {}
     end
 
@@ -18,9 +18,9 @@ class Display
     end
 
     def build_row(row, i)
-        row.map.each_with_index do |i, j|
+        row.map.each_with_index do |piece, j|
             color_options = colors_for(i, j)
-            piece.to_s.colorize(color, options)
+            piece.to_s.colorize(color_options)
         end
     end
     
@@ -34,7 +34,7 @@ class Display
         else
             bg = :light_yellow
         end
-        { background : bg }
+        { background: bg }
     end
 
     def reset!
