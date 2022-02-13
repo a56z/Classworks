@@ -1,4 +1,5 @@
 require_relative 'cursor'
+require_relative 'pieces'
 
 class Board
     attr_reader :rows
