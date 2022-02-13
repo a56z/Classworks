@@ -7,13 +7,13 @@ class Display
 
     def initialize(board)
         @board = board
-        @cursor = Cursor.new([0,0] board])
+        @cursor = Cursor.new([0,0], board)
         @notifications = {}
     end
 
     def build_grid
-        @board.rows.each_with_index do |i, j|
-            build_row[i, j]
+        @board.rows.map.each_with_index do |row, j|
+            build_row(row, i)
         end
     end
 
