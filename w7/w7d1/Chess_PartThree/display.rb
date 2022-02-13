@@ -2,9 +2,13 @@ require 'colorize'
 require_relative 'cursor'
 
 class Display
+
+    attr_reader :board, :notifications, :cursor
+
     def initialize(board)
         @board = board
         @cursor = Cursor.new([0,0, board])
+        @notifications = {}
     end
 
     def build_grid
@@ -32,6 +36,18 @@ class Display
         end
         { background : bg }
     end
+
+    def reset!
+        @notifications.delete(:error)
+      end
+    
+      def uncheck!
+        @notifications.delete(:check)
+      end
+    
+      def set_check!
+        @notifications[:check] = "Check!"
+      end
 
     def render
         system("clear")
