@@ -1,5 +1,11 @@
+require_relative './poker_hands'
+
 class Hand
-    def initialize(card, poker_hand)
-        
+    include PokerHands
+
+    attr_reader :cards
+    def initialize(cards)
+        raise "must have 5 cards" if cards.count != 5
+        @cards = cards.sort
     end
 end
