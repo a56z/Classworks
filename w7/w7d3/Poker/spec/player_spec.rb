@@ -94,6 +94,10 @@ describe Player do
             player.fold
             expect(player.folded?).to eq(true)
         end
+        
+        it 'should return false otherwise' do
+            expect(player).to_not be_folded
+        end
     end
 
 end
